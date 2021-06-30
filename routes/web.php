@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use \App\Http\Controllers\CategoryController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,4 +31,10 @@ Route::get('/template', function () {
 
 Route::get('/template', function () {
     return view('layouts.master');
+});
+
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    // Category
+    Route::resource('categories', CategoryController::class);
 });
